@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Selamat Hari Abi — Alfina</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fbf6f0;
+    --card:#fff;
+    --accent:#8b5e3c;
+    --muted:#7a6b5a;
+    --soft:#f3ece5;
+    --shadow: 0 10px 30px rgba(20,20,20,0.08);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(180deg,var(--bg),#f0eadf);
+    font-family:Inter,system-ui,Arial;
+    color:var(--muted);
+    padding:28px;
+  }
+  .wrap{
+    width:100%;
+    max-width:920px;
+    background:var(--card);
+    border-radius:18px;
+    box-shadow:var(--shadow);
+    overflow:hidden;
+    display:grid;
+    grid-template-columns:420px 1fr;
+  }
+  @media (max-width:880px){
+    .wrap{grid-template-columns:1fr;}
+    .hero-img{height:360px;}
+  }
+  .hero-img{
+    background:linear-gradient(180deg,#fff,#fcf8f5);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:36px;
+  }
+  .photo{
+    width:100%;
+    height:420px;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,0.06);
+    border:1px solid rgba(139,94,60,0.06);
+  }
+  .photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    transform:translateY(0);
+    transition:transform .9s ease;
+  }
+  .photo:hover img{
+    transform:scale(1.03);
+  }
+  .content{
+    padding:48px 44px;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+    justify-content:center;
+  }
+  .eyebrow{
+    font-family:Inter;
+    font-weight:600;
+    color:var(--accent);
+    letter-spacing:1px;
+    font-size:13px;
+  }
+  h1{
+    font-family:'Playfair Display',serif;
+    margin:0;
+    font-size:44px;
+    color:#2b1f18;
+    line-height:1.02;
+  }
+  p.lead{
+    margin:0;
+    font-size:18px;
+    color:#4d3f36;
+    opacity:.95;
+    max-width:46ch;
+  }
+  .quote{
+    margin-top:6px;
+    font-style:italic;
+    color:#5b5048;
+    background:linear-gradient(90deg,rgba(139,94,60,0.04),transparent);
+    padding:16px;
+    border-radius:10px;
+    border:1px solid rgba(139,94,60,0.05);
+  }
+  .from{
+    margin-top:10px;
+    font-weight:600;
+    color:var(--accent);
+    font-size:15px;
+  }
+  .actions{
+    display:flex;
+    gap:10px;
+    margin-top:18px;
+  }
+  .btn{
+    padding:12px 16px;
+    border-radius:10px;
+    border:0;
+    cursor:pointer;
+    font-weight:600;
+  }
+  .btn.primary{
+    background:var(--accent);
+    color:white;
+    box-shadow:0 6px 18px rgba(139,94,60,0.18);
+  }
+  .btn.ghost{
+    background:transparent;
+    border:1px solid rgba(139,94,60,0.12);
+    color:var(--accent);
+  }
+  .center-note{
+    font-size:13px;
+    color:#6b5d52;
+    margin-top:8px;
+  }
+  .modal-backdrop{
+    position:fixed;
+    inset:0;
+    background:rgba(20,20,20,0.45);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    visibility:hidden;
+    opacity:0;
+    transition:opacity .25s;
+  }
+  .modal{
+    background:var(--card);
+    padding:28px;
+    border-radius:12px;
+    max-width:720px;
+    width:94%;
+    box-shadow:0 18px 50px rgba(0,0,0,0.35);
+    text-align:center;
+  }
+  .modal.show{
+    transform:translateY(0);
+  }
+  .modal-backdrop.show{
+    visibility:visible;
+    opacity:1;
+  }
+  .modal h2{
+    margin:0;
+    font-family:'Playfair Display',serif;
+    font-size:28px;
+    color:#2b1f18;
+  }
+  .modal p{
+    color:#4d3f36;
+    font-size:16px;
+  }
+  .close{
+    margin-top:18px;
+    padding:10px 14px;
+    border-radius:8px;
+    border:0;
+    background:var(--accent);
+    color:#fff;
+    cursor:pointer;
+  }
+  footer{
+    padding:14px;
+    text-align:center;
+    color:#8b7b70;
+    font-size:13px;
+  }
+</style>
+</head>
+<body>
+  <main class="wrap" id="card">
+    <div class="hero-img">
+      <div class="photo" aria-hidden="true">
+        <img id="heroPhoto" src="SUPIYANTO 4X6..jpeg" alt="Foto Abi">
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="eyebrow">Untuk Abi Tercinta</div>
+      <h1 id="mainTitle">Selamat Hari Abi</h1>
+      <p class="lead" id="leadText">
+        Abi, terima kasih telah menjadi cahaya yang tenang di setiap langkahku.  
+        Dari pelukan sederhana hingga nasihat paling bijak, semua bentuk cintamu membentuk hari-hariku.  
+        Semoga kebahagiaan dan kesehatan selalu menyertai Abi.
+      </p>
+
+      <div class="quote" id="quote">
+        "Di balik segala kekuatan, ada kelembutan yang tak terlihat — itu pelukanmu, Abi."
+      </div>
+      <div class="from">Dengan cinta, <strong>Alfina</strong></div>
+
+      <div class="actions">
+        <button class="btn primary" id="openBtn">Buka Ucapan</button>
+      </div>
+      <div class="center-note">
+        dari anak pertama ma mu
+      </div>
+    </div>
+  </main>
+
+  <div class="modal-backdrop" id="modal">
+    <div class="modal" role="dialog" aria-modal="true">
+      <h2 id="modalTitle">Selamat Hari Abi!</h2>
+      <p id="modalMsg">
+        Abi, terima kasih atas segala pengorbanan dan cinta yang tak pernah pupus.  
+        Semoga setiap langkah Abi selalu diberkahi dan penuh kebahagiaan.
+        tetap menjadi abi yang fina kenal ya.....
+        fina belum bisa ngasih apa apa sama abi tunggu fina sukses ya....dan jangan lupa doian fina biar bisa banggain abi sama momy
+        fina sayang abi
+      </p>
+      <button class="close" id="closeModal">Tutup</button>
+    </div>
+  </div>
+
+<script>
+  const openBtn = document.getElementById('openBtn');
+  const modal = document.getElementById('modal');
+  const closeModal = document.getElementById('closeModal');
+
+  openBtn.addEventListener('click', ()=>{
+    modal.classList.add('show');
+    modal.style.visibility = 'visible';
+    modal.style.opacity = '1';
+    const img = document.getElementById('heroPhoto');
+    img.animate([{transform:'scale(1)'},{transform:'scale(1.02)'},{transform:'scale(1)'}], {duration:1200, easing:'ease-in-out'});
+  });
+
+  closeModal.addEventListener('click', ()=>{
+    modal.classList.remove('show');
+    modal.style.visibility = 'hidden';
+    modal.style.opacity = '0';
+  });
+</script>
+
+<footer>
+  Halaman dibuat khusus untuk Abi — salam sayang dari Alfina.
+</footer>
+</body>
+</html>
